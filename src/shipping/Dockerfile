@@ -62,4 +62,7 @@ COPY --from=builder /app/target/release/shipping /app/shipping
 COPY --from=builder /bin/grpc_health_probe /bin/grpc_health_probe
 
 EXPOSE ${SHIPPING_PORT}
+
+
+
 ENTRYPOINT ["/app/shipping"]
