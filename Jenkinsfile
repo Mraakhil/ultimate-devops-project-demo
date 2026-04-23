@@ -123,10 +123,8 @@ pipeline{
                   sh 'docker build -t shipping:latest .' 
                     sh 'docker tag shipping:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/shipping:latest'
                     sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/shipping:latest'
+    
         }
-        
-
-         }
       }
    }
 }
