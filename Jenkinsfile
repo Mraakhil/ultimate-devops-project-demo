@@ -21,7 +21,7 @@ pipeline{
             steps {
                 script {
                     if (params.SERVICE_NAME == 'accounting') {
-                        dir('ultimate-devops-project-demo/src/accounting') {
+                        dir('src/accounting') {
                             sh 'docker build -t accounting:latest .' 
                             sh 'docker tag accounting:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/accounting:latest'
                             sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/accounting:latest'
