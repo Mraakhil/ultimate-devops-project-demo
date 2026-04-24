@@ -18,15 +18,17 @@ pipeline{
         }
 
         stage('Build Service') {
-            steps {
-                script {
-                    if (params.SERVICE_NAME == 'accounting') {
-                        dir('src/accounting') {
-                            sh 'docker build -t accounting:latest -f src/accounting/Dockerfile .' 
-                            sh 'docker tag accounting:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg:accounting-latest'
-                            sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg:accounting-latest'
-                        }
-                    }
+    steps {
+        script {
+            if (params.SERVICE_NAME == 'accounting') {
+                // Execute from root, but set the build context to the subdirectory
+                sh 'docker build -t accounting:latest -f src/accounting/Dockerfile src/accounting'
+                sh 'docker tag accounting:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg:accounting-latest'
+                sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg:accounting-latest'
+            }
+        }
+    }
+}
                     if (params.SERVICE_NAME == 'ad') {
                         dir('ultimate-devops-project-demo/src/ad') {
                             sh 'docker build -t ad:latest .' 
