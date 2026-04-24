@@ -35,22 +35,14 @@ pipeline {
                     def service = params.SERVICE_NAME
                     def imageTag = "${env.ECR_REGISTRY}/${env.REPO_NAME}:${service}-latest"
                     
-                    // 1. Move into the specific microservice directory
-                    dir("src/${service}") {
-                        
-                        // 2. Build the image (paths are now correctly relative to the directory)
-                        sh "docker build -t ${service}:latest -f Dockerfile ." 
-                        
-                        // 3. Tag the image for your ECR registry
-                        sh "docker tag ${service}:latest ${imageTag}"
-                        
-                        // 4. Push the image to ECR
-                        sh "docker push ${imageTag}"
-                    }
+                    // Run from root context (.) so Docker can see /src and /pb
+                    sh "docker build -t ${service}:latest -f src/${service}/Dockerfile ." 
+                    
+                    sh "docker tag ${service}:latest ${imageTag}"
+                    sh "docker push ${imageTag}"
                 }
             }
         }
-    }
     
     post {
         always {
