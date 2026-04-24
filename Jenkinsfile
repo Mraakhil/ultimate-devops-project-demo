@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage('pull code'){
             steps{
-                git url: 'https://github.com/Mraakhil/ultimate-devops-project-demo.git', branch: 'main'
+                git url: 'https://github.com/Mraakhil/ultimate-devops-project-demo.git', branch: "${params.BRANCH_NAME}"
             }
         }
 
