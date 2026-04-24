@@ -27,63 +27,63 @@ pipeline{
                             sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/accounting:latest'
                         }
                     }
-                    else if (params.SERVICE_NAME == 'ad') {
+                    if (params.SERVICE_NAME == 'ad') {
                         dir('ultimate-devops-project-demo/src/ad') {
                             sh 'docker build -t ad:latest .' 
                             sh 'docker tag ad:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/ad:latest'
                             sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/ad:latest'
                         }
                     }
-                    else if (params.SERVICE_NAME == 'cart') {
+                    if (params.SERVICE_NAME == 'cart') {
                         dir('ultimate-devops-project-demo/src/cart') {
                             sh 'docker build -t cart:latest .' 
                             sh 'docker tag cart:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/cart:latest'
                             sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/cart:latest'
                         }
                     }
-                    else if (params.SERVICE_NAME == 'checkout') {
+                    if (params.SERVICE_NAME == 'checkout') {
                         dir('ultimate-devops-project-demo/src/checkout') {
                             sh 'docker build -t checkout:latest .' 
                             sh 'docker tag checkout:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/checkout:latest'
                             sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/checkout:latest'
                         }
                     }
-                    else if (params.SERVICE_NAME == 'currency') {
+                    if (params.SERVICE_NAME == 'currency') {
                         dir('ultimate-devops-project-demo/src/currency') {
                             sh 'docker build -t currency:latest .' 
                             sh 'docker tag currency:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/currency:latest'
                             sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/currency:latest'
                         }
                     }
-                    else if (params.SERVICE_NAME == 'email') {
+                    if (params.SERVICE_NAME == 'email') {
                         dir('ultimate-devops-project-demo/src/email') {
                             sh 'docker build -t email:latest .' 
                             sh 'docker tag email:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/email:latest'
                             sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/email:latest'
                         }
                     }
-                    else if (params.SERVICE_NAME == 'payment') {
+                    if (params.SERVICE_NAME == 'payment') {
                         dir('ultimate-devops-project-demo/src/payment') {
                             sh 'docker build -t payment:latest .' 
                             sh 'docker tag payment:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/payment:latest'
                             sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/payment:latest'
                         }
                     }
-                    else if (params.SERVICE_NAME == 'product-catalog') {
+                    if (params.SERVICE_NAME == 'product-catalog') {
                         dir('ultimate-devops-project-demo/src/product-catalog') {
                             sh 'docker build -t product-catalog:latest .' 
                             sh 'docker tag product-catalog:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/product-catalog:latest'
                             sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/product-catalog:latest'
                         }
                     }
-                    else if (params.SERVICE_NAME == 'recommendation') {
+                    if (params.SERVICE_NAME == 'recommendation') {
                         dir('ultimate-devops-project-demo/src/recommendation') {
                             sh 'docker build -t recommendation:latest .' 
                             sh 'docker tag recommendation:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/recommendation:latest'
                             sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/recommendation:latest'
                         }
                     }
-                    else if (params.SERVICE_NAME == 'shipping') {
+                    if (params.SERVICE_NAME == 'shipping') {
                         dir('ultimate-devops-project-demo/src/shipping') {
                             sh 'docker build -t shipping:latest .' 
                             sh 'docker tag shipping:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/shipping:latest'
