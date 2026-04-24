@@ -22,9 +22,9 @@ pipeline{
                 script {
                     if (params.SERVICE_NAME == 'accounting') {
                         dir('src/accounting') {
-                            sh 'docker build -t accounting:latest .' 
-                            sh 'docker tag accounting:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/accounting:latest'
-                            sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/accounting:latest'
+                            sh 'docker build -t accounting:latest -f src/accounting/Dockerfile .' 
+                            sh 'docker tag accounting:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg:accounting-latest'
+                            sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg:accounting-latest'
                         }
                     }
                     if (params.SERVICE_NAME == 'ad') {
