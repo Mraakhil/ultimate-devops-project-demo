@@ -9,7 +9,6 @@ pipeline {
     }
     
     environment {
-        // Variables keep your pipeline clean and easy to update later
         AWS_REGION   = "ap-south-1"
         ECR_REGISTRY = "240828341590.dkr.ecr.ap-south-1.amazonaws.com"
         REPO_NAME    = "vprofileappimg"
@@ -35,7 +34,11 @@ pipeline {
                     def service = params.SERVICE_NAME
                     def imageTag = "${env.ECR_REGISTRY}/${env.REPO_NAME}:${service}-latest"
                     
-                    // Run from root context (.) so Docker can see /src and /pb
+                    echo "Building ${service} from the repository root context..."
+                    
+                    /* IMPORTANT: We run from root (no dir() block) so Docker can see 
+                       the /pb and /src folders mentioned in your Dockerfile.
+                    */
                     sh "docker build -t ${service}:latest -f src/${service}/Dockerfile ." 
                     
                     sh "docker tag ${service}:latest ${imageTag}"
@@ -43,14 +46,14 @@ pipeline {
                 }
             }
         }
+    }
     
     post {
         always {
-            // 5. Clean up the local image to free up Jenkins disk space
             script {
-                echo "Cleaning up local workspace images..."
-                sh "docker rmi -f \$(docker images -q ${params.SERVICE_NAME}:latest) || true"
+                echo "Cleaning up local image..."
+                sh "docker rmi -f ${params.SERVICE_NAME}:latest || true"
             }
         }
     }
-}
+} // This is the brace that was likely missing!
