@@ -20,11 +20,14 @@ pipeline{
         stage('Build Service') {
     steps {
         script {
-            if (params.SERVICE_NAME == 'accounting') {
-                // Execute from root, but set the build context to the subdirectory
-                sh 'docker build -t accounting:latest -f src/accounting/Dockerfile src/accounting'
-                sh 'docker tag accounting:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg:accounting-latest'
-                sh 'docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg:accounting-latest'
+            // This moves you into the specific folder
+            dir("src/${params.SERVICE_NAME}") {
+                
+                // Now that you are inside, use "." for the Dockerfile path
+                sh "docker build -t ${params.SERVICE_NAME}:latest -f Dockerfile ." 
+                
+                sh "docker tag ${params.SERVICE_NAME}:latest 240828341590.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg:${params.SERVICE_NAME}-latest"
+                sh "docker push 240828341590.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg:${params.SERVICE_NAME}-latest"
             }
         }
     }
