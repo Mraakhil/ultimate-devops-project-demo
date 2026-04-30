@@ -40,7 +40,7 @@ pipeline {
                     /* IMPORTANT: We run from root (no dir() block) so Docker can see 
                        the /pb and /src folders mentioned in your Dockerfile.
                     */
-                    sh "docker build -t ${service}:latest -f src/${service}/Dockerfile src/${service}" 
+                    sh "docker build -t ${service}:latest -f src/${service}/Dockerfile .}" 
                     
                     sh "docker tag ${service}:latest ${imageTag}"
                     sh "docker push ${imageTag}"
