@@ -6,8 +6,14 @@ ARG TARGETARCH=amd64
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-COPY ["/src/accounting/", "Accounting/"]
-COPY ["/pb/demo.proto", "Accounting/proto/"]
+# ... (SDK image and ARGs) ...
+
+
+# Remove the leading slash so it looks at the root of the context
+COPY ["src/accounting/", "Accounting/"]
+COPY ["pb/demo.proto", "Accounting/proto/"]
+
+# ... (rest of the file) ...
 
 # 3. Restoring using the defined TARGETARCH
 RUN dotnet restore "./Accounting/Accounting.csproj" -r linux-$TARGETARCH
