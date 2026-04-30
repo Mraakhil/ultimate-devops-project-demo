@@ -10,8 +10,8 @@ pipeline {
     
     environment {
         AWS_REGION   = "ap-south-1"
-        ECR_REGISTRY = "240828341590.dkr.ecr.ap-south-1.amazonaws.com"
-        REPO_NAME    = "vprofileappimg"
+        ECR_REGISTRY = "945504685239.dkr.ecr.ap-south-1.amazonaws.com"
+        REPO_NAME    = "project/cicdproject"
     }
 
     stages {
