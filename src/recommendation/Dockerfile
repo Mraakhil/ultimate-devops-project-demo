@@ -8,7 +8,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 COPY src/recommendation/ ./
-
+COPY pb/ ./pb/
 RUN opentelemetry-bootstrap -a install 
 
 ENV RECOMMENDATION_PORT 1010
