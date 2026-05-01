@@ -7,7 +7,7 @@ COPY src/recommendation/requirements.txt ./
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY . .
+COPY src/recommendation/ ./
 
 RUN opentelemetry-bootstrap -a install 
 
