@@ -12,7 +12,7 @@ pipeline {
         AWS_REGION   = "ap-south-1"
         ECR_REGISTRY = "016933545788.dkr.ecr.ap-south-1.amazonaws.com"
         REPO_NAME    = "project/cicdproject"
-        DOCKER_BUILDKIT = '0'
+        DOCKER_BUILDKIT = '1'
     }
     
     stages {
