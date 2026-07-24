@@ -10,7 +10,7 @@ pipeline {
     
     environment {
         AWS_REGION   = "ap-south-1"
-        ECR_REGISTRY = "public.ecr.aws/a2k6u9c2/project/cicdproject"
+        ECR_REGISTRY = "848684726346.dkr.ecr.ap-south-1.amazonaws.com/project/cicdproject"
         REPO_NAME    = "project/cicdproject"
         DOCKER_BUILDKIT = '0'
     }
