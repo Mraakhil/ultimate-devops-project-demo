@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     parameters {
-        string(name: 'BRANCH_NAME', defaultValue: 'dev', description: 'Branch to build')
+        string(name: 'BRANCH_NAME', defaultValue: 'Mraakhil-patch-1', description: 'Branch to build')
         choice(name: 'SERVICE_NAME', 
                choices: ['accounting', 'ad', 'checkout', 'currency', 'email', 'payment', 'product-catalog', 'recommendation', 'shipping', 'frontend-proxy', 'frontend'], 
                description: 'Choose the service to build')
